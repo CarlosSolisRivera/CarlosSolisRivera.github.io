@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Una página sencilla para probar nuevas ideas.">
-    <title>Carlos Solis · Inicio</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141821">
+  <meta name="description" content="Una pequeña aventura, cinco flores amarillas y una carta para mi persona favorita.">
+  <title>Para Saanmai · Nuestra pequeña aventura</title>
+  <link rel="icon" href="./assets/flower.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js" defer></script>
+  <script src="./script.js" defer></script>
 </head>
 <body>
-    <header class="container header">
-        <a class="brand" href="./home.html">Carlos Solis<span aria-hidden="true">.</span></a>
-        <a class="nav-link" href="#prueba">Probar página <span aria-hidden="true">↗</span></a>
-    </header>
-
-    <main class="container">
-        <section class="hero" aria-labelledby="title">
-            <p class="eyebrow">UN PEQUEÑO COMIENZO</p>
-            <h1 id="title">Las grandes ideas<br>empiezan <span>simple.</span></h1>
-            <p class="intro">Un espacio para crear, experimentar y dar el siguiente paso. Por ahora, empecemos con lo esencial.</p>
-            <a class="button" href="#prueba">Vamos a probar <span aria-hidden="true">→</span></a>
-            <p class="note">Ligera. Sencilla. Lista para explorar.</p>
-        </section>
-
-        <section class="test-panel" id="prueba" aria-labelledby="test-title">
-            <div>
-                <p class="eyebrow">PRUEBA RÁPIDA</p>
-                <h2 id="test-title">Un clic para empezar.</h2>
-                <p>Abre el mensaje para comprobar la interacción.</p>
-            </div>
-            <details>
-                <summary>Comprobar funcionamiento</summary>
-                <p class="success">¡Funciona! El contenido se despliega correctamente.</p>
-            </details>
-        </section>
-    </main>
-
-    <footer class="container footer">
-        <span>Carlos Solis</span>
-        <span>Hecho para empezar.</span>
-    </footer>
+  <a class="skip-link" href="#aventura">Ir a la aventura</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#inicio"><img src="./assets/flower.svg" width="28" height="32" alt=""> Saanmai <span class="brand-dot">♥</span></a>
+    <nav aria-label="Navegación principal"><a href="#recuerdos">Nuestros recuerdos</a><a href="#carta">Una cartita <span aria-hidden="true">↗</span></a></nav>
+    <span class="date-badge mono">21 / SEPT <span aria-hidden="true">✦</span></span>
+  </header>
+  <main id="inicio">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> EVENTO ESPECIAL · 21 DE SEPTIEMBRE</p>
+        <h1 id="hero-title">En todas mis<br>partidas,<br><span>te elijo a ti.</span></h1>
+        <p class="dedication">Para <span data-name>Saanmai</span>, el gran amor de mi vida <span class="tiny-heart" aria-hidden="true">♥</span></p>
+        <p class="hero-description">Hoy las flores son amarillas y esta pequeña aventura es para ti. Porque contigo, hasta los días normales tienen un poquito de magia.</p>
+        <a class="button button-primary" href="#aventura">Empezar nuestra aventura <span aria-hidden="true">→</span></a>
+        <p class="hero-footnote mono"><span aria-hidden="true">✦</span> MODO COOPERATIVO · VIDAS INFINITAS</p>
+      </div>
+      <div class="game-window" id="aventura" role="region" aria-labelledby="game-title" tabindex="-1">
+        <div class="window-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mono" id="game-title">Nuestro pequeño mundo 👾</span><span aria-hidden="true">✧</span></div>
+        <div class="game-scene">
+          <div class="scene-hud mono"><span>LVL. 21</span><span class="hearts" aria-label="Tres vidas">♥ ♥ ♥</span></div>
+          <div class="scene-label mono">Un jardín para <span data-name>Saanmai</span></div>
+          <img class="world" src="./assets/pixel-garden.svg" width="640" height="480" alt="Un jardín pixel art con flores amarillas, montañas, una luna y dos personajes juntos bajo las estrellas.">
+          <button class="collect-flower flower-1" type="button" aria-label="Recoger flor amarilla 1"><img src="./assets/flower.svg" alt="" width="32" height="40"></button>
+          <button class="collect-flower flower-2" type="button" aria-label="Recoger flor amarilla 2"><img src="./assets/flower.svg" alt="" width="32" height="40"></button>
+          <button class="collect-flower flower-3" type="button" aria-label="Recoger flor amarilla 3"><img src="./assets/flower.svg" alt="" width="32" height="40"></button>
+          <button class="collect-flower flower-4" type="button" aria-label="Recoger flor amarilla 4"><img src="./assets/flower.svg" alt="" width="32" height="40"></button>
+          <button class="collect-flower flower-5" type="button" aria-label="Recoger flor amarilla 5"><img src="./assets/flower.svg" alt="" width="32" height="40"></button>
+          <div class="scene-hint mono" aria-hidden="true">↓ toca las flores y crea tu ramo ↓</div>
+        </div>
+        <div class="quest-panel">
+          <div class="quest-icon" aria-hidden="true">✿</div>
+          <div class="quest-copy"><span class="eyebrow">TU MISIÓN DE HOY</span><p id="quest-message" aria-live="polite">Recoge 5 flores. Hay una sorpresa para ti.</p></div>
+          <span class="quest-count mono" id="flower-count">0 / 5</span>
+          <progress id="flower-progress" max="5" value="0" aria-label="Flores recogidas">0 de 5</progress>
+        </div>
+        <noscript><p class="no-script">Activa JavaScript para recoger las flores. Puedes leer la carta al final de la página.</p></noscript>
+      </div>
+    </section>
+    <div class="love-strip"><div class="wrap mono"><span>✦ DOS JUGADORES</span><span>UN MISMO EQUIPO</span><span>♥ MIL AVENTURAS POR VIVIR</span><span>GUARDADO EN MI CORAZÓN ✦</span></div></div>
+    <section class="memories-section wrap" id="recuerdos" aria-labelledby="memories-title">
+      <div class="section-heading"><div><p class="eyebrow">NUESTRO INVENTARIO DE MOMENTOS</p><h2 id="memories-title">Pequeños recuerdos.<br>Mis mejores <span>recompensas.</span></h2></div><p>Si pudiera guardar una partida,<br>sería cualquiera a tu lado.</p></div>
+      <div class="memory-grid">
+        <article class="memory-card"><div class="memory-image"><img id="memory-image-0" src="./assets/memory-1.svg" width="640" height="440" alt="Imagen de ejemplo: una puesta de sol pixel art." loading="lazy"><span class="image-tag mono">CHECKPOINT 01</span></div><div class="memory-caption"><p class="eyebrow" id="memory-date-0">[FECHA ESPECIAL]</p><h3 id="memory-title-0">Donde empezó la aventura</h3><p id="memory-text-0">[Escribe aquí cómo se conocieron y ese detalle que nunca olvidas.]</p></div><span class="card-star" aria-hidden="true">✦</span></article>
+        <article class="memory-card"><div class="memory-image"><img id="memory-image-1" src="./assets/memory-2.svg" width="640" height="440" alt="Imagen de ejemplo: dos controles de videojuego." loading="lazy"><span class="image-tag mono">CHECKPOINT 02</span></div><div class="memory-caption"><p class="eyebrow" id="memory-date-1">[NUESTRA PRIMERA PARTIDA]</p><h3 id="memory-title-1">Mi equipo favorito</h3><p id="memory-text-1">[Cuenta una partida, una salida o una anécdota que los haga sonreír.]</p></div><span class="card-star" aria-hidden="true">♥</span></article>
+        <article class="memory-card"><div class="memory-image"><img id="memory-image-2" src="./assets/memory-3.svg" width="640" height="440" alt="Imagen de ejemplo: flores amarillas pixel art." loading="lazy"><span class="image-tag mono">CHECKPOINT 03</span></div><div class="memory-caption"><p class="eyebrow" id="memory-date-2">[UN DÍA INOLVIDABLE]</p><h3 id="memory-title-2">Nuestro siguiente nivel</h3><p id="memory-text-2">[Agrega ese recuerdo especial o un sueño que quieran cumplir juntos.]</p></div><span class="card-star" aria-hidden="true">✿</span></article>
+      </div>
+      <p class="gallery-note mono">↳ Los mejores momentos no necesitan un botón de guardar.</p>
+    </section>
+    <section class="letter-section wrap" id="carta" aria-labelledby="letter-title">
+      <div class="letter-decoration" aria-hidden="true"><img src="./assets/flower.svg" width="64" height="80" alt=""><span>♥</span><img src="./assets/flower.svg" width="48" height="60" alt=""></div>
+      <p class="eyebrow">OBJETO LEGENDARIO · SOLO PARA TI</p>
+      <h2 id="letter-title">Unas flores y algo<br>que quería <span>decirte.</span></h2>
+      <p>No soy muy bueno encontrando tesoros,<br>pero contigo creo que encontré el más bonito.</p>
+      <details class="letter-details" id="letter-details">
+        <summary class="button button-primary">Abrir mi cartita <span aria-hidden="true">♡</span></summary>
+        <div class="letter-paper">
+          <p class="eyebrow">PARA MI PERSONA FAVORITA</p><h3>Querida <span data-name>Saanmai</span>:</h3>
+          <div id="letter-body"><p>Estas flores amarillas son una pequeña forma de recordarte lo mucho que iluminas mis días. Si la vida fuera un videojuego, volvería a elegirte como mi compañera en cada partida.</p><p>Todavía recuerdo esos momentos en los que jugamos juntos, riéndonos incluso cuando perdíamos, porque contigo hasta las derrotas se sienten bien. Admiro tu fuerza, tu forma de perseguir lo que quieres sin pedirle permiso a nadie, y esa energía tuya que contagia a todos los que te rodean. Te prometo seguir aprendiendo a quererte mejor cada día, con paciencia, con calma, y confiando en lo que construimos juntos.</p><p>Feliz 21 de septiembre, mi bebetsuki. Nos quedan muchísimos mundos por descubrir.</p></div>
+          <p class="signature">Con todo mi cariño,<br><span id="sender-name">Jara ♥</span> <span aria-hidden="true">♥</span></p>
+        </div>
+      </details>
+      <p class="letter-small mono">SIN GAME OVER PARA LO NUESTRO.</p>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="#inicio"><img src="./assets/flower.svg" width="22" height="28" alt=""> Saanmai <span class="brand-dot">♥</span></a><p>Hecho con amor, unos píxeles y muchas ganas de verte sonreír.</p><span class="mono">21 SEPT <span aria-hidden="true">✦</span></span></footer>
+  <dialog id="bouquet-dialog" aria-labelledby="bouquet-title" aria-describedby="bouquet-description">
+    <button class="dialog-close" id="close-dialog" type="button" aria-label="Cerrar sorpresa">×</button>
+    <div class="bouquet" aria-hidden="true"><img src="./assets/flower.svg" alt=""><img src="./assets/flower.svg" alt=""><img src="./assets/flower.svg" alt=""></div>
+    <p class="eyebrow">MISIÓN COMPLETADA</p><h2 id="bouquet-title">Un ramo para ti,<br><span data-name>Saanmai</span>.</h2>
+    <p id="bouquet-description">Cinco flores y una certeza:<br>te elegiría en todas mis vidas.</p>
+    <button class="button button-primary" type="button" id="read-letter">Leer mi recompensa <span aria-hidden="true">→</span></button>
+    <button class="text-button" id="play-again" type="button">Volver a recoger flores</button>
+  </dialog>
 </body>
 </html>
